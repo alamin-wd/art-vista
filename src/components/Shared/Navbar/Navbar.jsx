@@ -24,16 +24,16 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
             </li>
             <li className="text-lg font-medium mr-2">
-                <NavLink to="/AllArt&CraftItems">All Art & Craft Items</NavLink>
+                <NavLink to="/allItems">All Art & Craft Items</NavLink>
             </li>
-
+            
             {user && (
                 <>
                     <li className="text-lg font-medium mr-2">
-                        <NavLink to="/add-item">Add Craft Item</NavLink>
+                        <NavLink to="/addItem">Add Craft Item</NavLink>
                     </li>
                     <li className="text-lg font-medium mr-2">
-                        <NavLink to="/my-items">My Art & Craft List</NavLink>
+                        <NavLink to="/myItems">My Art & Craft List</NavLink>
                     </li>
                 </>
             )}
