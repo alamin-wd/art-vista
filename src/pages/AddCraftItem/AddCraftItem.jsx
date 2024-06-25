@@ -67,7 +67,7 @@ const AddCraftItem = () => {
                 <div className="bg-gradient-to-r from-[#D48165] via-[#F79D84] to-[#C37355] p-10 mb-10">
 
                     <div className="w-full md:w-4/5 mx-auto text-center">
-                        <h3 className="text-[#374151] text-2xl md:text-4xl font-semibold">Add New Craft Item</h3>
+                        <h3 className="text-[#374151] text-2xl md:text-4xl font-semibold md:font-bold">Add New Craft Item</h3>
 
                         <p className="text-[#1B1A1AB3] text-sm md:text-base md:font-semibold mt-2">
                             Add your unique craft items by filling out the form. Showcase your masterpieces, set your price, and reach a wider audience. Join our community and let your creativity shine!

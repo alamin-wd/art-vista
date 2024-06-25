@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
@@ -22,12 +22,11 @@ const SignUp = () => {
         const password = form.password.value;
         const photoURL = form.photoURL.value;
 
-        // console.log(form.email.value, form.password.value);
         createUser(email, password, name, photoURL)
             .then(result => {
                 console.log(result.user);
 
-                const user = {email};
+                // const user = {email};
 
                     Swal.fire({
                         icon: 'success',
@@ -48,6 +47,7 @@ const SignUp = () => {
                     text: error.message,
                     confirmButtonColor: '#d33'
                 });
+                setLoading(false);
             });
 
     };

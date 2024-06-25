@@ -26,7 +26,7 @@ const Navbar = () => {
             <li className="text-lg font-medium mr-2">
                 <NavLink to="/allItems">All Art & Craft Items</NavLink>
             </li>
-            
+
             {user && (
                 <>
                     <li className="text-lg font-medium mr-2">
@@ -76,23 +76,28 @@ const Navbar = () => {
                         </NavLink>
                     </>
                 ) : (
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user.photoURL} alt="User Avatar" />
-                            </div>
-                        </label>
+                    <div className="flex items-center gap-3">
 
-                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a>{user.displayName}</a>
-                            </li>
+                        <button onClick={handleSignOut} className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Out</button>
 
-                            <li>
-                                <a onClick={handleSignOut}>Sign Out</a>
-                            </li>
-                        </ul>
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-12 rounded-full">
+                                    <img src={user.photoURL} alt="User Avatar" />
+                                </div>
+                            </label>
 
+                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-lg w-40">
+                                <li>
+                                    <a>{user.displayName}</a>
+                                </li>
+
+                                <li>
+                                    <a onClick={handleSignOut}>Sign Out</a>
+                                </li>
+                            </ul>
+
+                        </div>
                     </div>
                 )}
             </div>

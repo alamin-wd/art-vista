@@ -1,11 +1,29 @@
+import { useContext } from "react";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogins = () => {
 
+    const { googleLogin, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result.user);
+                navigate("/");
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false);
+            });
+    }
+
     return (
         <div className="space-y-8">
-            {/* onClick={handleGoogleLogin} */}
-            <button
+
+            <button onClick={handleGoogleLogin}
                 className="btn btn-outline w-full hover:bg-[#0F9D58] text-[#0F9D58] text-lg">
                 <FaGoogle />
                 Continue With Google

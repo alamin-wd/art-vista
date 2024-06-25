@@ -17,10 +17,8 @@ const SignIn = () => {
         
         const form = e.target;
 
-        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // const photoURL = form.photoURL.value;
 
         signIn(email, password)
             .then(result => {
