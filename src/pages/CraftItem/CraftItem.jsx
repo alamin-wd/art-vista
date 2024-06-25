@@ -39,7 +39,8 @@ const CraftItem = ({ craftItem }) => {
 
                     <div className="mt-2 text-center">
                         <Link to={"/itemDetails"}>
-                            <button className=" bg-[#6B2B06] hover:bg-[#8E4826] text-xl font-medium text-white px-4 py-2 rounded-lg">View Details</button>
+                            <button className=" bg-[#6B2B06] 
+                            hover:bg-[#8E4826] text-xl font-medium text-white px-4 py-2 rounded-lg">View Details</button>
                         </Link>
                     </div>
 
