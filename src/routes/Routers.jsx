@@ -17,15 +17,17 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/craftItems'),
             },
 
             {
                 path: "/allItems",
                 element: <AllArtCraftItems></AllArtCraftItems>,
+                loader: () => fetch('http://localhost:5000/craftItems'),
             },
 
             {
-                path: "/craftItemDetails",
+                path: "/itemDetails",
                 element: <CraftItemDetails></CraftItemDetails>,
             },
 
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
                 path: "/myItems",
                 element: <MyArtCraftLists></MyArtCraftLists>,
             },
-            
+
             {
                 path: "/signIn",
                 element: <SignIn></SignIn>,
