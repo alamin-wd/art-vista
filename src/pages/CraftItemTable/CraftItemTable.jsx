@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const CraftItemTable = ({ craftItem }) => {
 
-    const { craftItemName, sub_categoryName, imageURL, shortDescription } = craftItem;
+    const {_id, craftItemName, sub_categoryName, imageURL, shortDescription } = craftItem;
+
 
     return (
 
         <div>
 
             <div>
-                {/* for helmet */}
+                <Helmet>
+                    <title>All Art & Crafts || Art Vista</title>
+                </Helmet>
             </div>
 
             <div className="overflow-x-auto mt-10">
@@ -35,7 +39,7 @@ const CraftItemTable = ({ craftItem }) => {
 
                             <th className="w-1/6 ">
 
-                                <Link to={"/itemDetails"}>
+                                <Link to={`/itemDetails/${_id}`}>
                                     <button className="border border-[#D48165] text-[#401F04] hover:text-[#D48165] px-4 py-2 rounded-lg">View Details</button>
                                 </Link>
 

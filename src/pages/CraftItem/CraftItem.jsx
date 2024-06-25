@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const CraftItem = ({ craftItem }) => {
     
-    const { craftItemName, sub_categoryName, price, rating, stockStatus, imageURL, shortDescription } = craftItem;
+    const {_id, craftItemName, sub_categoryName, price, rating, stockStatus, imageURL, shortDescription } = craftItem;
    
     return (
 
@@ -38,7 +38,7 @@ const CraftItem = ({ craftItem }) => {
                     <p className="text-base text-[#706F6F]">{shortDescription}</p>
 
                     <div className="mt-2 text-center">
-                        <Link to={"/itemDetails"}>
+                        <Link to={`/itemDetails/${_id}`}>
                             <button className=" bg-[#6B2B06] 
                             hover:bg-[#8E4826] text-xl font-medium text-white px-4 py-2 rounded-lg">View Details</button>
                         </Link>
