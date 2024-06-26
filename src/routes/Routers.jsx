@@ -9,12 +9,14 @@ import CraftItemDetails from "../pages/CraftItemDetails/CraftItemDetails";
 import MyArtCraftLists from "../pages/MyArtCraftLists/MyArtCraftLists";
 import AllCraftCards from "../pages/AllCraftCards/AllCraftCards";
 import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
+import NotFound from "../components/Shared/NotFoundPage/NotFound";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: "/",
@@ -42,11 +44,13 @@ const router = createBrowserRouter([
             {
                 path: "/myItems",
                 element: <MyArtCraftLists></MyArtCraftLists>,
+                loader: () => fetch('http://localhost:5000/craftItems'),
             },
 
             {
-                path: "/updateItems",
+                path: "/updateItems/:id",
                 element: <UpdateCraftItem></UpdateCraftItem>,
+                loader: ({ params }) => fetch(`http://localhost:5000/craftItem/${params.id}`),
             },
 
             {

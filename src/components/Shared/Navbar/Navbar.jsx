@@ -98,8 +98,6 @@ const Navbar = () => {
                 ) : (
                     <div className="flex items-center gap-3">
 
-                        <button onClick={handleSignOut} className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Out</button>
-
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-12 rounded-full">

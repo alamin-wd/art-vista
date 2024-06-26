@@ -20,6 +20,7 @@ const SocialLogins = () => {
             });
     }
 
+    
     return (
         <div className="space-y-8">
 

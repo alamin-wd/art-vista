@@ -8,21 +8,21 @@ const Footer = () => {
         <div>
             <footer className="footer bg-base-200 text-base-content p-10">
                 <aside>
-                <Link to={"/"}>
-                    <button className="text-4xl font-bold mb-4">Art Vista</button>
-                </Link>
+                    <Link to={"/"}>
+                        <button className="text-4xl font-bold mb-4">Art Vista</button>
+                    </Link>
                     <p>
-                    Your premier destination for unique, handcrafted <br />arts and crafts. Discover, create, and inspire <br />with our curated collections.
+                        Your premier destination for unique, handcrafted <br />arts and crafts. Discover, create, and inspire <br />with our curated collections.
                     </p>
 
                     <div className="flex items-center gap-4 text-2xl mt-4">
-                            <a className="hover:text-[#1877F2]" href=""><FaFacebookF /></a>
+                        <a className="hover:text-[#1877F2]" href=""><FaFacebookF /></a>
 
-                            <a className="hover:text-[#E87642]" href=""><FaInstagram /></a>
+                        <a className="hover:text-[#E87642]" href=""><FaInstagram /></a>
 
-                            <a className="hover:text-[#14171A]" href=""><FaTwitter /></a>
+                        <a className="hover:text-[#14171A]" href=""><FaTwitter /></a>
 
-                            <a className="hover:text-[#0077B5]" href=""><FaLinkedin /></a>
+                        <a className="hover:text-[#0077B5]" href=""><FaLinkedin /></a>
                     </div>
                 </aside>
                 <nav>
@@ -56,8 +56,10 @@ const Footer = () => {
                 </nav>
 
             </footer>
-            <div className="font-medium text-center py-3">
-                <p>Copyright © ${new Date().getFullYear()} - All right reserved by Art Vista</p>
+            <div className="font-medium text-center py-3 bg-base-300">
+                <p>
+                    <small>Copyright © ${new Date().getFullYear()} - All right reserved by Art Vista</small>
+                </p>
             </div>
         </div>
     );

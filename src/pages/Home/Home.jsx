@@ -7,6 +7,7 @@ import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
 import { TfiSupport } from "react-icons/tfi";
 import CategoryCards from "../CategoryCards/CategoryCards";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -28,6 +29,9 @@ const Home = () => {
     return (
 
         <div>
+            <Helmet>
+                <title>Home | Art Vista</title>
+            </Helmet>
 
             <Banner></Banner>
 

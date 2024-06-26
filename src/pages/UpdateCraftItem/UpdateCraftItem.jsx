@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaArrowLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
 
 const UpdateCraftItem = () => {
 
+    const craftItem = useLoaderData();
     const [isLoading, setIsLoading] = useState(true);
+
+    const { craftItemName, sub_categoryName, price, rating, processingTime, customization, stockStatus, imageURL, shortDescription } = craftItem;
+
 
     useEffect(() => {
 
@@ -19,7 +23,6 @@ const UpdateCraftItem = () => {
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>;
     }
-
 
     return (
 
@@ -51,7 +54,7 @@ const UpdateCraftItem = () => {
                             Add your unique craft items by filling out the form. Showcase your masterpieces, set your price, and reach a wider audience. Join our community and let your creativity shine!
                         </p>
                     </div>
-                    {/* onSubmit={handleAddCraftItem} */}
+
                     <form
                         className="md:grid md:grid-cols-2 justify-between items-center mt-6">
 
@@ -60,7 +63,9 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Item Name</span>
                             </label>
-                            <input type="text" name="craftItemName"
+                            <input type="text"
+                                name="craftItemName"
+                                defaultValue={craftItemName}
                                 placeholder="Craft Item Name"
                                 className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
@@ -70,7 +75,9 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Subcategory Name</span>
                             </label>
-                            <input type="text" name="sub_categoryName"
+                            <input type="text"
+                                name="sub_categoryName"
+                                defaultValue={sub_categoryName}
                                 placeholder="Sub_category Name" className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
@@ -79,7 +86,9 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Price</span>
                             </label>
-                            <input type="text" name="price"
+                            <input type="text"
+                                name="price"
+                                defaultValue={price}
                                 placeholder="Craft Item Price" className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
@@ -88,7 +97,9 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Rating</span>
                             </label>
-                            <input type="text" name="rating"
+                            <input type="text"
+                                name="rating"
+                                defaultValue={rating}
                                 placeholder="Rating" className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
@@ -97,8 +108,9 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Processing Time</span>
                             </label>
-                            <input type="text" name="processingTime"
-                                // value={}
+                            <input type="text"
+                                name="processingTime"
+                                defaultValue={processingTime}
                                 placeholder="Processing Time" className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
@@ -112,7 +124,7 @@ const UpdateCraftItem = () => {
                                 className="input input-bordered text-[#1B1A1ACC]" required>
                                 <option
                                     className="text-[#1B1A1ACC]"
-                                    value=""></option>
+                                    defaultValue={customization}></option>
                                 <option
                                     className="text-[#1B1A1ACC]"
                                     value="yes">Yes</option>
@@ -134,7 +146,7 @@ const UpdateCraftItem = () => {
 
                                 <option
                                     className="text-[#1B1A1ACC]"
-                                    value=""></option>
+                                    defaultValue={stockStatus}></option>
 
                                 <option
                                     className="text-[#1B1A1ACC]"
@@ -156,7 +168,10 @@ const UpdateCraftItem = () => {
                             <label className="label">
                                 <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">Image URL</span>
                             </label>
-                            <input type="url" name="imageURL" placeholder="Image URL" className="input input-bordered text-[#1B1A1ACC]" required />
+                            <input type="url"
+                                name="imageURL"
+                                defaultValue={imageURL}
+                                placeholder="Image URL" className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
                         {/* Description Filed */}
@@ -167,7 +182,7 @@ const UpdateCraftItem = () => {
 
                             <input type="text"
                                 name="shortDescription"
-                                // value={}
+                                defaultValue={shortDescription}
                                 placeholder="Short Description"
                                 className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>

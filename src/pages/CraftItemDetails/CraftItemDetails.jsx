@@ -5,7 +5,7 @@ import { BiDollar } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
-
+ 
 const CraftItemDetails = () => {
 
     const craftItem = useLoaderData();

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const CraftItem = ({ craftItem }) => {
     
     const {_id, craftItemName, sub_categoryName, price, rating, stockStatus, imageURL, shortDescription } = craftItem;
-   
+    
     return (
 
         <div>

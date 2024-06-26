@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import SocialLogins from "../SocialLogins/SocialLogins";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
+
 
 const SignUp = () => {
 
@@ -11,29 +13,30 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const handleSignUp = (e) => {
+    const handleSignUp = e => {
         e.preventDefault();
 
         const form = e.target;
 
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photoURL = form.photoURL.value;
+        // const photoURL = form.photoURL.value;
 
-        createUser(email, password, name, photoURL)
+        createUser(email, password)
             .then(result => {
                 console.log(result.user);
 
                 // const user = {email};
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Success!',
-                        text: 'Your account has been created successfully!',
-                        confirmButtonColor: '#3085d6'
-                    });
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Your account has been created successfully!',
+                    confirmButtonColor: '#3085d6'
+                });
 
                 form.reset();
                 navigate("/signIn");
@@ -49,8 +52,19 @@ const SignUp = () => {
                 });
                 setLoading(false);
             });
-
     };
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+        window.scrollTo(0, 0);
+    }, []);
+
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
 
     return (
 

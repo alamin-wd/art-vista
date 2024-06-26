@@ -1,20 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogins from "../../SocialLogins/SocialLogins";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner/LoadingSpinner";
+
 
 const SignIn = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        
+
         const form = e.target;
 
         const email = form.email.value;
@@ -43,9 +46,19 @@ const SignIn = () => {
                     confirmButtonColor: '#d33'
                 });
             });
-
-
     };
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+        window.scrollTo(0, 0);
+    }, []);
+
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
 
     return (
         <div className="mt-6 py-6 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 ...">

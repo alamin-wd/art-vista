@@ -23,7 +23,7 @@ const AllArtCraftItems = () => {
 
     return (
 
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto mb-10">
             <div>
                 <Helmet>
                     <title>All Art & Craft Items | Art Vista</title>
