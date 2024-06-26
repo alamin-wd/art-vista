@@ -3,7 +3,7 @@ import { HiMenu } from "react-icons/hi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
-const Navbar = () => {
+const Navbar = () => { 
     const { user, LogOut, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
 

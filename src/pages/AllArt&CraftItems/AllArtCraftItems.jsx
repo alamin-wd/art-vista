@@ -1,6 +1,6 @@
-import { FaStar } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import CraftItemTable from "../CraftItemTable/CraftItemTable";
+import { Helmet } from "react-helmet-async";
 
 const AllArtCraftItems = () => {
 
@@ -9,6 +9,11 @@ const AllArtCraftItems = () => {
     return (
 
         <div className="w-11/12 mx-auto">
+            <div>
+                <Helmet>
+                    <title>All Art & Craft Items | Art Vista</title>
+                </Helmet>
+            </div>
 
             <div className="text-center mt-6">
                 <h3 className="text-[#401F04] text-2xl md:text-4xl font-semibold md:font-bold">Explore Our All Art & Craft Items.</h3>

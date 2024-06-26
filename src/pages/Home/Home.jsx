@@ -37,7 +37,7 @@ const Home = () => {
                 <div className="w-48 mx-auto mt-10">
                     <div className={craftItemsLength === craftItems.length && "hidden"}>
 
-                        <Link to={"/allItems"}>
+                        <Link to={"/allCraftCards"}>
                             <button onClick={() => setCraftItemsLength(craftItems.length)}
                                 className="w-full mx-auto bg-[#6B2B06] hover:bg-[#8E4826] text-white py-2 rounded-lg font-medium">
                                 View All Craft Items
