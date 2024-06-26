@@ -3,12 +3,27 @@ import { useLoaderData } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { BiDollar } from "react-icons/bi";
 import { FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
 
 const CraftItemDetails = () => {
 
     const craftItem = useLoaderData();
-
+    const [isLoading, setIsLoading] = useState(true);
+    
     const { craftItemName, sub_categoryName, price, rating, processingTime, customization, stockStatus, imageURL, description } = craftItem;
+    
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+        window.scrollTo(0, 0);
+    }, []);
+
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
 
     return (
 

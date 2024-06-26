@@ -1,17 +1,29 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CraftItem from "../CraftItem/CraftItem";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
 import { TfiSupport } from "react-icons/tfi";
 import CategoryCards from "../CategoryCards/CategoryCards";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
 
 const Home = () => {
 
     const craftItems = useLoaderData();
-
     const [craftItemsLength, setCraftItemsLength] = useState(6);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        
+        setTimeout(() => {
+          setIsLoading(false); 
+        }, 500); 
+      }, []);
+    
+      if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>;
+      }
 
     return (
 

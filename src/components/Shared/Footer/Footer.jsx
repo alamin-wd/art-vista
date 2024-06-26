@@ -6,7 +6,7 @@ const Footer = () => {
     return (
 
         <div>
-            <footer className="footer bg-base-100 text-base-content p-10">
+            <footer className="footer bg-base-200 text-base-content p-10">
                 <aside>
                 <Link to={"/"}>
                     <button className="text-4xl font-bold mb-4">Art Vista</button>

@@ -1,64 +1,18 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
-import { Helmet } from "react-helmet-async";
 
-const AddCraftItem = () => {
+const UpdateCraftItem = () => {
 
     const [isLoading, setIsLoading] = useState(true);
-
-    const handleAddCraftItem = event => {
-        event.preventDefault();
-
-        const form = event.target;
-
-        const craftItemName = form.craftItemName.value;
-        const sub_categoryName = form.sub_categoryName.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const processingTime = form.processingTime.value;
-        const customization = form.customization.value;
-        const stockStatus = form.stockStatus.value;
-        const imageURL = form.imageURL.value;
-        const shortDescription = form.shortDescription.value;
-        const userName = form.userName.value;
-        const userEmail = form.userEmail.value;
-
-        const newCraftItem = { craftItemName, sub_categoryName, price, rating, processingTime, customization, stockStatus, imageURL, shortDescription, userName, userEmail };
-
-        fetch('http://localhost:5000/craftItem', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newCraftItem),
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Congratulation!',
-                        text: 'Craft Item Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Next'
-                    })
-                }
-
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-
-    }
 
     useEffect(() => {
 
         setTimeout(() => {
             setIsLoading(false);
-        }, 500);
+        }, 800);
         window.scrollTo(0, 0);
     }, []);
 
@@ -66,12 +20,14 @@ const AddCraftItem = () => {
         return <LoadingSpinner></LoadingSpinner>;
     }
 
+
     return (
 
         <div>
+
             <div>
                 <Helmet>
-                    <title>Add Craft Item | Craft Item | Art vista</title>
+                    <title>Update Craft Item | My Items | Art Vista</title>
                 </Helmet>
             </div>
 
@@ -89,14 +45,14 @@ const AddCraftItem = () => {
                 <div className="bg-gradient-to-r from-[#D48165] via-[#F79D84] to-[#C37355] p-10 mb-10">
 
                     <div className="w-full md:w-4/5 mx-auto text-center">
-                        <h3 className="text-[#374151] text-2xl md:text-4xl font-semibold md:font-bold">Add New Craft Item</h3>
+                        <h3 className="text-[#374151] text-2xl md:text-4xl font-semibold md:font-bold">Update Your Craft Item</h3>
 
                         <p className="text-[#1B1A1AB3] text-sm md:text-base md:font-semibold mt-2">
                             Add your unique craft items by filling out the form. Showcase your masterpieces, set your price, and reach a wider audience. Join our community and let your creativity shine!
                         </p>
                     </div>
-
-                    <form onSubmit={handleAddCraftItem}
+                    {/* onSubmit={handleAddCraftItem} */}
+                    <form
                         className="md:grid md:grid-cols-2 justify-between items-center mt-6">
 
                         {/* Craft Item Field */}
@@ -216,37 +172,11 @@ const AddCraftItem = () => {
                                 className="input input-bordered text-[#1B1A1ACC]" required />
                         </div>
 
-                        <hr className="mt-6 mx-3 md:mx-5 col-span-2 border-[#6B2B06]" />
-
-                        <div className="col-span-2 flex flex-col md:flex-row justify-between items-center">
-                            {/* User Name Field */}
-                            <div className="form-control w-11/12 md:w-1/2 mx-6">
-                                <label className="label">
-                                    <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">User Name</span>
-                                </label>
-                                <input type="text" name="userName"
-                                    // value={}
-                                    placeholder="Your Name"
-                                    className="input input-bordered text-[#1B1A1ACC]" required />
-                            </div>
-
-                            {/* User Email Field */}
-                            <div className="form-control w-11/12 md:w-1/2 mx-6">
-                                <label className="label">
-                                    <span className="label-text text-lg text-[#1B1A1ACC] font-semibold">User Email</span>
-                                </label>
-                                <input type="email" name="userEmail"
-                                    // value={}
-                                    placeholder="Your Email"
-                                    className="input input-bordered text-[#1B1A1ACC]" required />
-                            </div>
-                        </div>
-
                         <div className="mx-5 mt-10 col-span-2">
                             <input
                                 className="w-full bg-[#6B2B06] hover:bg-[#8E4826] text-xl font-medium text-white px-4 py-2 rounded-lg "
                                 type="submit"
-                                value="Add This Item" />
+                                value="Update This Item" />
                         </div>
 
                     </form>
@@ -254,9 +184,8 @@ const AddCraftItem = () => {
                 </div>
 
             </div>
-
         </div>
     );
 };
 
-export default AddCraftItem;
+export default UpdateCraftItem;

@@ -1,10 +1,25 @@
 import { useLoaderData } from "react-router-dom";
 import CraftItemTable from "../CraftItemTable/CraftItemTable";
 import { Helmet } from "react-helmet-async";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
 
 const AllArtCraftItems = () => {
 
     const craftItems = useLoaderData();
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+        window.scrollTo(0, 0);
+    }, []);
+
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
 
     return (
 

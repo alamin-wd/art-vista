@@ -8,6 +8,7 @@ import AddCraftItem from "../pages/AddCraftItem/AddCraftItem";
 import CraftItemDetails from "../pages/CraftItemDetails/CraftItemDetails";
 import MyArtCraftLists from "../pages/MyArtCraftLists/MyArtCraftLists";
 import AllCraftCards from "../pages/AllCraftCards/AllCraftCards";
+import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
             {
                 path: "/myItems",
                 element: <MyArtCraftLists></MyArtCraftLists>,
+            },
+
+            {
+                path: "/updateItems",
+                element: <UpdateCraftItem></UpdateCraftItem>,
             },
 
             {
