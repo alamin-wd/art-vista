@@ -2,6 +2,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import { useState } from "react";
 import CraftItem from "../CraftItem/CraftItem";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
+import { TfiSupport } from "react-icons/tfi";
+import CategoryCards from "../CategoryCards/CategoryCards";
 
 const Home = () => {
 
@@ -48,6 +52,46 @@ const Home = () => {
 
             </div>
 
+            {/* Category Section */}
+            <div className="w-11/12 mx-auto">
+                <div className="text-center">
+                    <h3 className="text-[#401F04] text-2xl md:text-3xl font-semibold md:font-bold">Browse Painting and Drawing Art & Craft by Categories</h3>
+
+                    <p className="text-[#786c66] my-3">Discover a diverse range of painting and drawing art and craft, organized by categories. Whether you're looking for watercolors, acrylics,<br /> sketches, or mixed media, find the perfect pieces to inspire your creativity and enhance your artistic journey at Art Vista.</p>
+                </div>
+
+                <div className="mt-10">
+                    <CategoryCards></CategoryCards>
+                </div>
+
+            </div>
+
+            {/* Services Section */}
+            <div className="w-11/12 mx-auto mt-20 mb-10 grid md:grid-cols-2 lg:grid-cols-4 justify-between items-center ps-10">
+                <div>
+                    <span className="text-6xl"><TbTruckDelivery /></span>
+                    <h4 className="text-2xl text-[#401F04] font-bold mt-3">Free Delivery</h4>
+                    <p className="text-[#786c66] mt-2">Free shipping for all orders</p>
+                </div>
+
+                <div>
+                    <span className="text-6xl "><RiSecurePaymentLine /></span>
+                    <h4 className="text-2xl text-[#401F04] font-bold mt-4">100% Payment Secure</h4>
+                    <p className="text-[#786c66] mt-2">Payment 100% secured</p>
+                </div>
+
+                <div>
+                    <span className="text-6xl"><TbTruckReturn /></span>
+                    <h4 className="text-2xl text-[#401F04] font-bold mt-4">14 Days Return</h4>
+                    <p className="text-[#786c66] mt-2">You have 14 days to return</p>
+                </div>
+
+                <div>
+                    <span className="text-6xl"><TfiSupport /></span>
+                    <h4 className="text-2xl text-[#401F04] font-bold mt-4">Support 24/7</h4>
+                    <p className="text-[#786c66] mt-2">We support 24 hours a day</p>
+                </div>
+            </div>
         </div>
     );
 };
