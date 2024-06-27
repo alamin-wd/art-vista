@@ -6,7 +6,7 @@ import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinne
 
 const AllArtCraftItems = () => {
 
-    const craftItems = useLoaderData();
+    const craftItems = useLoaderData(); console.log(craftItems)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

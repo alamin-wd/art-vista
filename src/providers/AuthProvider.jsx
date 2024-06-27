@@ -1,8 +1,9 @@
 
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
+import { GoogleAuthProvider } from 'firebase/auth/web-extension';
 
 
 // Initialize Firebase Authentication and get a reference to the service
@@ -13,17 +14,16 @@ export const AuthContext = createContext(null);
 // Social Providers
 const googleProvider = new GoogleAuthProvider();
 
+
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     // User Sign Up
-    const createUser = (email, password) => {
-
+    const createUser = (email, password, userName, photoURL) => {
         setLoading(true);
-
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password, userName, photoURL);
     }
 
     // Google Login
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, user => {
             if (user) {
-                setUser(user);
+                // setUser(user);
                 setLoading(false);
             }
         })
@@ -65,11 +65,12 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         setUser,
-        createUser,
         loading,
+        createUser,
         signIn,
-        LogOut,
-        googleLogin
+        googleLogin,
+        LogOut
+
     }
 
     return (

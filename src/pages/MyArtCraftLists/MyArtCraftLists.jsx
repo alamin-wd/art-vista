@@ -10,7 +10,6 @@ const MyArtCraftLists = () => {
     const craftItems = useLoaderData();
     const [isLoading, setIsLoading] = useState(true);
 
-
     useEffect(() => {
 
         setTimeout(() => {
@@ -22,27 +21,28 @@ const MyArtCraftLists = () => {
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>;
     }
+    
+return (
 
-    return (
+    <div className="w-11/12 mx-auto my-10 ">
+        <h2>{craftItems.length}</h2>
 
-        <div className="w-11/12 mx-auto my-10 ">
+        <div>
+            <Helmet>
+                <title>My Art & Craft Items | Craft Items | Art Vista</title>
+            </Helmet>
+        </div>
 
-            <div>
-                <Helmet>
-                    <title>My Art & Craft Items | Craft Items | Art Vista</title>
-                </Helmet>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-6 mt-10">
-                {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-6 mt-10">
+            {
                     craftItems.map(craftItem => <MyCraftCards
                         key={craftItem._id}
                         craftItem={craftItem}
                     ></MyCraftCards>)
                 }
-            </div>
         </div>
-    );
+    </div>
+);
 };
 
 export default MyArtCraftLists;

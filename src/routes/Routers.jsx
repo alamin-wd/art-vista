@@ -16,6 +16,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        loader: () => fetch('http://localhost:5000/craftItems'),
         errorElement: <NotFound></NotFound>,
         children: [
             {
@@ -42,9 +43,10 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/myItems",
+                path: "/myItems/:userName",
                 element: <MyArtCraftLists></MyArtCraftLists>,
-                loader: () => fetch('http://localhost:5000/craftItems'),
+                loader: ({ params }) => fetch(`http://localhost:5000/craftItems/${params.userName}`)
+                    .then((res) => res.json()),
             },
 
             {
