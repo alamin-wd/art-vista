@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogins from "../../SocialLogins/SocialLogins";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
@@ -12,13 +12,13 @@ const SignIn = () => {
 
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     const handleSignIn = (e) => {
         e.preventDefault();
-
 
         const form = e.target;
 
@@ -36,7 +36,7 @@ const SignIn = () => {
                 });
  
                 form.reset();
-                navigate("/");
+                navigate(location?.state ? location.state : "/");
             })
 
             .catch(error => {

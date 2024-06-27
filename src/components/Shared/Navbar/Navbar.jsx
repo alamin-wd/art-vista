@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../providers/AuthProvider";
 // import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-    // const { user, LogOut, setUser } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const { LogOut } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [isNavbarFixed, setIsNavbarFixed] = useState(false);
 
     useEffect(() => {
@@ -23,15 +24,15 @@ const Navbar = () => {
         };
     }, []);
 
-    // const handleSignOut = () => {
-    //     LogOut()
-    //         .then(() => {
-    //             navigate('/');
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    // }
+    const handleSignOut = () => {
+        LogOut()
+            .then(() => {
+                navigate('/');
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     const menus = (
         <>
@@ -79,14 +80,18 @@ const Navbar = () => {
             {/* Navbar End */}
 
             <div className="navbar-end gap-4">
-            <NavLink to="/signIn">
-                            <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign In</button>
-                        </NavLink>
+                <NavLink to="/signIn">
+                    <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign In</button>
+                </NavLink>
 
-                        <NavLink to="/signUp">
-                            <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Up</button>
-                        </NavLink>
-                        {/* <a onClick={handleSignOut}>Sign Out</a> */}
+                <NavLink to="/signUp">
+                    <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Up</button>
+                </NavLink>
+
+                <button onClick={handleSignOut}
+                    className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Out</button>
+
+                {/* <a onClick={handleSignOut}>Sign Out</a> */}
             </div>
 
         </div>

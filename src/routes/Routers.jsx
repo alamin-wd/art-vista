@@ -10,6 +10,7 @@ import MyArtCraftLists from "../pages/MyArtCraftLists/MyArtCraftLists";
 import AllCraftCards from "../pages/AllCraftCards/AllCraftCards";
 import UpdateCraftItem from "../pages/UpdateCraftItem/UpdateCraftItem";
 import NotFound from "../components/Shared/NotFoundPage/NotFound";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
 
             {
                 path: "/itemDetails/:id",
-                element: <CraftItemDetails></CraftItemDetails>,
+                element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/craftItem/${params.id}`),
             },
 
