@@ -5,21 +5,32 @@ import { useNavigate } from "react-router-dom";
 
 const SocialLogins = () => {
 
-    const { googleLogin, setLoading } = useContext(AuthContext);
+    const { googleLogin, githubLogin, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
                 console.log(result.user);
-                navigate("/");
+                navigate("/"); 
             })
             .catch(error => {
                 console.error(error);
-                setLoading(false);
+                setLoading(false); 
             });
     }
 
+    const handleGithubLogin = () => {
+        githubLogin()
+            .then(result => {
+                console.log(result.user);
+                navigate("/"); 
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false); 
+            });
+    }
     
     return (
         <div className="space-y-8">
@@ -34,8 +45,8 @@ const SocialLogins = () => {
                 <FaFacebookF />
                 Continue With Facebook
             </button>
-            {/* onClick={handleGithubLogin} */}
-            <button
+            
+            <button onClick={handleGithubLogin}
                 className="btn btn-outline w-full text-lg">
                 <FaGithub />
                 Continue With Github

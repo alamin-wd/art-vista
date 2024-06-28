@@ -1,48 +1,45 @@
-import { useEffect, useState } from "react";
-import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
-import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
-import MyCraftCards from "../MyCraftCards/MyCraftCards";
 
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const MyArtCraftLists = () => {
-
-    const craftItems = useLoaderData();
-    const [isLoading, setIsLoading] = useState(true);
+    const { userEmail } = useParams(); 
+    const [craftItems, setCraftItems] = useState([]); 
 
     useEffect(() => {
-
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 500);
-        window.scrollTo(0, 0);
-    }, []);
-
-    if (isLoading) {
-        return <LoadingSpinner></LoadingSpinner>;
-    }
-    
-return (
-
-    <div className="w-11/12 mx-auto my-10 ">
-        <h2>{craftItems.length}</h2>
-
-        <div>
-            <Helmet>
-                <title>My Art & Craft Items | Craft Items | Art Vista</title>
-            </Helmet>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-6 mt-10">
-            {
-                    craftItems.map(craftItem => <MyCraftCards
-                        key={craftItem._id}
-                        craftItem={craftItem}
-                    ></MyCraftCards>)
+        const fetchCraftItems = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/craftItems/user/${userEmail}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch craft items');
                 }
+                const data = await response.json();
+                console.log(data);
+                setCraftItems(data);
+            } catch (error) {
+                console.error('Error fetching craft items:', error);
+               
+            }
+        };
+
+        fetchCraftItems();
+    }, [userEmail]); 
+
+    return (
+        <div className='text-center text-lg mb-20'>
+            <h2>Craft Items for User: {craftItems.length}</h2>
+            <ul>
+                {craftItems.map(item => (
+                    <li key={item._id}>
+                        <p>Name: {item.craftItemName}</p>
+                        <p>Price: {item.price}</p>
+                        
+                    </li>
+                ))}
+            </ul>
         </div>
-    </div>
-);
-};
+    );
+}
 
 export default MyArtCraftLists;
+

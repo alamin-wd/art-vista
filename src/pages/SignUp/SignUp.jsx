@@ -20,13 +20,12 @@ const SignUp = () => {
         e.preventDefault();
 
         const form = e.target;
-        // console.log(form.name.value, form.email.value, form.password.value, form.photoURL.value)
+       
         const userName = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const photoURL = form.photoURL.value;
 
-       
         const isPasswordValid = validatePassword(password);
 
         if (!isPasswordValid) {
@@ -40,6 +39,7 @@ const SignUp = () => {
         createUser(email, password, userName, photoURL)
             .then(result => {
                 console.log(result);
+
                 const user = { userName, email, password, photoURL };
 
                 fetch('http://localhost:5000/user', {
@@ -155,10 +155,14 @@ const SignUp = () => {
                                         onClick={(e) => {
                                             e.preventDefault();
                                             setShowPassword(!showPassword);
-                                        }}
-                                    >
-                                        {showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+                                        }}>
+
+                                        {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+
                                     </button>
+                                    {/* <p>
+                                        <small>Must contain at least 6 characters, 1 Uppercase and 1 lowercase. </small>
+                                    </p> */}
 
                                 </div>
 
@@ -201,3 +205,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+

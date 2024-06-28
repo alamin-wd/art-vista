@@ -31,10 +31,10 @@ const SignIn = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success!',
-                    text: 'Your account has been created successfully!',
+                    text: 'You have successfully Sign In!',
                     confirmButtonColor: '#3085d6'
                 });
- 
+
                 form.reset();
                 navigate(location?.state ? location.state : "/");
             })
@@ -112,9 +112,10 @@ const SignIn = () => {
                                         onClick={(e) => {
                                             e.preventDefault();
                                             setShowPassword(!showPassword);
-                                        }}
-                                    >
-                                        {showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+                                        }}>
+
+                                        {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+
                                     </button>
 
                                 </div>

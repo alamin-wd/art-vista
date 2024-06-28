@@ -2,12 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-// import { AuthContext } from "../../../providers/AuthProvider";
+
 
 const Navbar = () => {
-    const { LogOut } = useContext(AuthContext);
+    const { user, LogOut, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [isNavbarFixed, setIsNavbarFixed] = useState(false);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,6 +28,7 @@ const Navbar = () => {
     const handleSignOut = () => {
         LogOut()
             .then(() => {
+                setUser(null);
                 navigate('/');
             })
             .catch(error => {
@@ -43,12 +45,16 @@ const Navbar = () => {
                 <NavLink to="/allItems">All Art & Craft Items</NavLink>
             </li>
 
-            <li className="text-lg font-medium mr-2">
-                <NavLink to="/addItem">Add Craft Item</NavLink>
-            </li>
-            <li className="text-lg font-medium mr-2">
-                <NavLink to="/myItems">My Art & Craft List</NavLink>
-            </li>
+            {user && (
+                <>
+                    <li className="text-lg font-medium mr-2">
+                        <NavLink to="/addItem">Add Craft Item</NavLink>
+                    </li>
+                    <li className="text-lg font-medium mr-2">
+                        <NavLink to="/craftItems/user/:userEmail">My Art & Craft List</NavLink>
+                    </li>
+                </>
+            )}
 
         </>
     );
@@ -80,18 +86,42 @@ const Navbar = () => {
             {/* Navbar End */}
 
             <div className="navbar-end gap-4">
-                <NavLink to="/signIn">
-                    <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign In</button>
-                </NavLink>
+                {!user ? (
+                    <>
+                        <NavLink to="/signIn">
+                            <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign In</button>
+                        </NavLink>
 
-                <NavLink to="/signUp">
-                    <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Up</button>
-                </NavLink>
+                        <NavLink to="/signUp">
+                            <button className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Up</button>
+                        </NavLink>
+                    </>
+                ) : (
+                    <div className="flex items-center gap-3">
 
-                <button onClick={handleSignOut}
-                    className="bg-[#6B2B06] hover:bg-[#8E4826] px-4 py-2 text-white rounded-lg">Sign Out</button>
+                        <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-12 rounded-full">
+                                    <img src={user.photoURL} alt="User Avatar" />
+                                </div>
+                            </label>
 
-                {/* <a onClick={handleSignOut}>Sign Out</a> */}
+                            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-200 rounded-lg w-40">
+                                <li>
+                                    <a>{user.displayName}</a>
+                                </li>
+                                <li>
+                                    <a href="/updateItems">Update Items</a>
+                                </li>
+
+                                <li>
+                                    <a onClick={handleSignOut}>Sign Out</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                )}
             </div>
 
         </div>
@@ -99,3 +129,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
