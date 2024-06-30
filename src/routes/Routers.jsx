@@ -19,22 +19,22 @@ const router = createBrowserRouter([
         element: <Root></Root>,
         errorElement: <NotFound></NotFound>,
         children: [
-            {
+            { 
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/craftItems'),
+                loader: () => fetch('https://art-vista-server.vercel.app/craftItems'),
             },
 
             {
                 path: "/allItems",
                 element: <AllArtCraftItems></AllArtCraftItems>,
-                loader: () => fetch('http://localhost:5000/craftItems'),
+                loader: () => fetch('https://art-vista-server.vercel.app/craftItems'),
             },
 
             {
                 path: "/itemDetails/:id",
                 element: <PrivateRoute><CraftItemDetails></CraftItemDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craftItem/${params.id}`),
+                loader: ({ params }) => fetch(`https://art-vista-server.vercel.app/craftItem/${params.id}`),
             },
 
             {
@@ -51,13 +51,13 @@ const router = createBrowserRouter([
             {
                 path: "/updateItems/:id",
                 element: <UpdateCraftItem></UpdateCraftItem>,
-                loader: ({ params }) => fetch(`http://localhost:5000/craftItem/${params.id}`),
+                loader: ({ params }) => fetch(`https://art-vista-server.vercel.app/craftItem/${params.id}`),
             },
 
             {
                 path: "/allCraftCards",
                 element: <AllCraftCards></AllCraftCards>,
-                loader: () => fetch('http://localhost:5000/craftItems'),
+                loader: () => fetch('https://art-vista-server.vercel.app/craftItems'),
             },
 
             {

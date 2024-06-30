@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
- 
+
 
 const AddCraftItem = () => {
 
@@ -28,8 +28,8 @@ const AddCraftItem = () => {
         const userEmail = form.userEmail.value;
 
         const newCraftItem = { craftItemName, sub_categoryName, price, rating, processingTime, customization, stockStatus, imageURL, shortDescription, userName, userEmail };
-
-        fetch('http://localhost:5000/craftItem', {
+        
+        fetch('https://art-vista-server.vercel.app/craftItem', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

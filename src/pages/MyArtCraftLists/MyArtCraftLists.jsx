@@ -9,7 +9,7 @@ const MyArtCraftLists = () => {
     useEffect(() => {
         const fetchCraftItems = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/craftItems/user/${userEmail}`);
+                const response = await fetch(`https://art-vista-server.vercel.app/craftItems/user/${userEmail}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch craft items');
                 }

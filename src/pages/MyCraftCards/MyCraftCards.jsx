@@ -23,7 +23,7 @@ const MyCraftCards = ({ craftItem }) => {
     //             //     text: "Your file has been deleted.",
     //             //     icon: "success"
     //             // });
-    //             fetch(`http://localhost:5000/craftItem/${_id}`, {
+    //             fetch(`https://art-vista-server.vercel.app/craftItem/${_id}`, {
     //                 method: 'DELETE'
     //             })
     //                 .then(res => res.json())

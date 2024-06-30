@@ -73,7 +73,7 @@ const Home = () => {
                 <div className="text-center">
                     <h3 className="text-[#401F04] text-2xl md:text-3xl font-semibold md:font-bold">Browse Painting and Drawing Art & Craft by Categories</h3>
 
-                    <p className="text-[#786c66] my-3">Discover a diverse range of painting and drawing art and craft, organized by categories. Whether you're looking for watercolors, acrylics,<br /> sketches, or mixed media, find the perfect pieces to inspire your creativity and enhance your artistic journey at Art Vista.</p>
+                    <p className="text-[#786c66] my-3">Discover a diverse range of painting and drawing art and craft, organized by categories. Whether you are looking for watercolors, acrylics,<br /> sketches, or mixed media, find the perfect pieces to inspire your creativity and enhance your artistic journey at Art Vista.</p>
                 </div>
 
                 <div className="mt-10">
